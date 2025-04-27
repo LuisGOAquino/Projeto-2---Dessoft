@@ -37,6 +37,15 @@ def calcula_pontos_sequencia_baixa(lrolados):
         if l[i] == l[i+1] - 1 and l[i+1] == l[i+2] - 1 and l[i+2] == l[i+3] - 1:
             soma = 15
     return soma
-
-
-        
+def calcula_pontos_sequencia_alta(lrolados):
+    l=[]
+    for dado in lrolados:
+        if dado not in l:
+            l.append(dado)
+    l=sorted(l)
+    if len(l) < 5:
+            return 0  
+    for i in range(len(l)-1):
+        if l[i+1] != l[i] + 1:
+            return 0
+    return 30
