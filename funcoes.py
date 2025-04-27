@@ -24,4 +24,19 @@ def calcula_pontos_soma(lrolados):
     for dado in lrolados:
         soma+=dado
     return soma
+def calcula_pontos_sequencia_baixa(lrolados):
+    soma=0
+    l=[]
+    for dado in lrolados:
+        if dado not in l:
+            l.append(dado)
+    l=sorted(l)
+    for i in range(len(l)-3):
+        if len(l) < 4:
+            return soma
+        if l[i] == l[i+1] - 1 and l[i+1] == l[i+2] - 1 and l[i+2] == l[i+3] - 1:
+            soma = 15
+    return soma
+
+
         
