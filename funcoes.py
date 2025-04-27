@@ -14,3 +14,9 @@ def remover_dado(rolados,estoque,remover):
     rolados.append(estoque[remover])
     del(estoque[remover])
     return[rolados,estoque]
+def calcula_pontos_regra_simples(lrolados):
+    dicio= {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+    for dado in lrolados:
+        dicio[dado]+=dado
+    return dicio
+        
