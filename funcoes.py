@@ -80,3 +80,16 @@ def calcula_pontos_quadra(lista):
                 soma += lista[i]
             break
     return soma
+def calcula_pontos_quina(lista):
+    dicio = {}
+    soma = 0
+    for dado in lista:
+        if dado not in dicio:
+            dicio[dado] = 1
+        else:
+            dicio[dado] += 1
+        if dicio[dado] == 5:
+            for i in range(len(lista)):
+                soma = 50
+            break
+    return soma
