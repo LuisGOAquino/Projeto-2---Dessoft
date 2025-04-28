@@ -67,3 +67,16 @@ def calcula_pontos_full_house(lrolados):
     for dado in l:
         soma += dado * dicio[dado]
     return soma
+def calcula_pontos_quadra(lista):
+    dicio = {}
+    soma = 0
+    for dado in lista:
+        if dado not in dicio:
+            dicio[dado] = 1
+        else:
+            dicio[dado] += 1
+        if dicio[dado] == 4:
+            for i in range(len(lista)):
+                soma += lista[i]
+            break
+    return soma
