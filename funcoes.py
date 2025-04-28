@@ -49,3 +49,21 @@ def calcula_pontos_sequencia_alta(lrolados):
         if l[i+1] != l[i] + 1:
             return 0
     return 30
+def calcula_pontos_full_house(lrolados):
+    dicio= {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+    l=[]
+    soma=0
+    for dado in lrolados:
+        if dado in dicio.keys():
+            dicio[dado] += 1
+        if dicio[dado] >= 2 and dado not in l:
+            l.append(dado)
+    if len(l) != 2:
+        return 0
+    if dicio[l[0]] == 2 and dicio[l[1]] != 3:
+        return 0
+    if dicio[l[0]] == 3 and dicio[l[1]] != 2:
+        return 0
+    for dado in l:
+        soma += dado * dicio[dado]
+    return soma
