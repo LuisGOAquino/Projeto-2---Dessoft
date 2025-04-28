@@ -93,3 +93,18 @@ def calcula_pontos_quina(lista):
                 soma = 50
             break
     return soma
+def calcula_pontos_regra_avancada(lista):
+    d = {}
+    p1 = calcula_pontos_quina(lista)
+    p2 = calcula_pontos_full_house(lista)
+    p3 = calcula_pontos_quadra(lista)
+    p4 = calcula_pontos_soma(lista)
+    p5 = calcula_pontos_sequencia_alta(lista)
+    p6 = calcula_pontos_sequencia_baixa(lista)
+    d['cinco_iguais'] = p1
+    d['full_house'] = p2
+    d['quadra'] = p3
+    d['sem_combinacao'] = p4
+    d['sequencia_alta'] = p5
+    d['sequencia_baixa'] = p6
+    return d
