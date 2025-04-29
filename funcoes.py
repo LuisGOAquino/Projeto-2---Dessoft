@@ -108,3 +108,12 @@ def calcula_pontos_regra_avancada(lista):
     d['sequencia_alta'] = p5
     d['sequencia_baixa'] = p6
     return d
+def faz_jogada(lista,cat,cartela):
+    psimples = calcula_pontos_regra_simples(lista)
+    pavançado = calcula_pontos_regra_avancada(lista)
+    if cat not in ['1', '2', '3', '4', '5', '6']:
+        cartela['regra_avancada'][cat] = pavançado[cat]
+    else:
+        categoria = int(cat)
+        cartela['regra_simples'][categoria] = psimples[categoria]
+    return cartela
