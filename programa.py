@@ -23,10 +23,9 @@ cartela = {
 
 dados = rolar_dados(5)
 guardados = []
-
+imprime_cartela(cartela)
 
 while rodada<12:
-    imprime_cartela(cartela)
     print(f'Dados rolados: {dados}')
     print(f'Dados guardados: {guardados}')
     c = 0
@@ -57,7 +56,7 @@ while rodada<12:
             dados = lista[0]
             guardados = lista[1]
         if ação == '3':
-            if c == 2:
+            if c == 1:
                 print('Você já usou todas as rerrolagens.')
             else:
                 numero = 5-len(guardados)
@@ -74,10 +73,46 @@ while rodada<12:
         while ação not in ['0','1','2','3','4']:
             print('Opção inválida. Tente novamente.')
             ação = (input('>'))
+        if ação == 0:
+            break
         print(f'Dados rolados: {dados}')
         print(f'Dados guardados: {guardados}')      
         print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
         ação = (input('>'))
+    dadosfinais = dados + guardados
+    confirmação = False
+    regra = None
     print('Digite a combinação desejada:')
-    i = input('>')
-    rodada +=1
+    combinação = int(input('>'))
+    while combinação not in ['1','2','3','4','5','6','sem_combinacao','quadra','full_house','sequencia_baixa','sequencia_alta','cinco_iguais']:
+        print('Combinação inválida. Tente novamente.')
+        print('Digite a combinação desejada:')
+        combinação = int(input('>'))
+    if combinação in cartela['regra_simples']:
+        confirmação = True
+        regra = 'regra_simples'
+    if combinação in cartela['regra_avancada']:
+        confirmação = True
+        regra = 'regra_avancada'
+    else:
+        cartela = faz_jogada(dadosfinais,combinação,cartela)
+    c = 0
+    dados = rolar_dados(5)
+    guardados = []
+    rodada += 1
+
+    
+soma = 0
+total = 0
+for valor in cartela['regra_simples'].values():
+    somas += valor
+    total += valor
+
+for valor in cartela['regra_avancada'].values():
+    total += valor
+
+if soma>=63:
+    total += 35
+
+imprime_cartela(cartela)
+print(f'Pontuação total: {total}')
